@@ -2,11 +2,17 @@ import React from "react";
 import { Image, SafeAreaView, ScrollView, Text, View } from "react-native";
 
 import CustomButton from "@/components/customButton";
-import { router } from "expo-router";
+import { useGlobalContext } from "@/context/GlobalProvider";
+import { Redirect, router } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import { images } from "../constants";
 
 const App = () => {
+  const { loading, isLogged }: any = useGlobalContext();
+  console.log("🚀 ~ App ~ isLogged:", isLogged);
+
+  if (!loading && isLogged) return <Redirect href="/home" />;
+
   return (
     <SafeAreaView className="bg-primary h-full">
       <ScrollView contentContainerStyle={{ height: "101%" }}>
@@ -24,7 +30,7 @@ const App = () => {
           <View className="relative mt-5">
             <Text className=" font-bold text-center text-3xl text-white">
               Discover Endless {"\n"} Posibilities with
-              <Text className="text-secondary-200"> Aora</Text>
+              <Text className="text-secondary-200"> Penguin</Text>
             </Text>
             <Image
               source={images.path}
@@ -34,7 +40,7 @@ const App = () => {
           </View>
           <Text className="text-sm font-pregular text-gray-100 mt-7 text-center">
             Where creativity meets innovation: embark on a journey of limitless
-            exploration with Aora
+            exploration with Penguin
           </Text>
           <CustomButton
             title="Continue with Email"

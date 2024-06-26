@@ -12,7 +12,7 @@ const CustomButton = ({
     <TouchableOpacity
       onPress={handlePress}
       activeOpacity={0.7}
-      className={`bg-secondary rounded-xl ${containerStyles} ${
+      className={`bg-teal-500 rounded-xl ${containerStyles} ${
         isLoading ? "opacity-50" : ""
       } py-4 w-full justify-center items-center`}
       disabled={isLoading}
